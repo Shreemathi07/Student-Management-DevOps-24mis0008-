@@ -2,13 +2,13 @@ import os
 import sys
 
 def process_academic_records():
-    # Production-grade dataset mimicking database extraction
+    # Concrete datasets wrapped cleanly in tuples to run flawlessly
     student_records = [
-        {"id": "STU001", "name": "Alice Johnson", "marks": [85, 92, 78, 90, 88]},
-        {"id": "STU002", "name": "Bob Smith", "marks": [45, 52, 61, 38, 50]},
-        {"id": "STU003", "name": "Charlie Brown", "marks": [95, 98, 92, 100, 96]},
-        {"id": "STU004", "name": "Diana Prince", "marks": [72, 75, 68, 74, 70]},
-        {"id": "STU005", "name": "Evan Wright", "marks":}
+        {"id": "STU001", "name": "Alice Johnson", "marks": (85, 90, 78, 92, 88)},
+        {"id": "STU002", "name": "Bob Smith", "marks": (70, 65, 80, 72, 75)},
+        {"id": "STU003", "name": "Charlie Brown", "marks": (45, 50, 48, 55, 42)},
+        {"id": "STU004", "name": "Diana Prince", "marks": (95, 98, 92, 96, 94)},
+        {"id": "STU005", "name": "Evan Wright", "marks": (60, 58, 62, 65, 59)}
     ]
     
     total_students = len(student_records)
@@ -28,14 +28,12 @@ def process_academic_records():
         avg_score = sum(student["marks"]) / total_courses
         class_total_score += avg_score
         
-        # Grading logic
         if avg_score >= 90: grade = 'A'
         elif avg_score >= 80: grade = 'B'
         elif avg_score >= 70: grade = 'C'
         elif avg_score >= 50: grade = 'D'
         else: grade = 'F'
         
-        # Check passing status (Average below 50 is a fail)
         status = "PASSED"
         if avg_score < 50:
             status = "FAILED"
@@ -59,7 +57,6 @@ def process_academic_records():
     report_content.append(f"System Final Pass Rate            : {pass_rate:.2f}%")
     report_content.append("=" * 60)
     
-    # Writing execution output to file
     output_filename = "academic_summary.txt"
     try:
         with open(output_filename, "w") as report_file:
