@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+    parameters {
+        booleanParam(name: 'RUN_PERFORMANCE_AUDIT', defaultValue: true, description: 'Check this parameter flag option to execute intensive performance threshold failure audit calculations.')
+    }
+    stages {
+        stage('Source SCM Checkout') {
+            steps {
+                git branch: 'main', url: ''
+            }
+        }
+        stage ('Core Application Packaging') {
+            steps {
+                dir('project3') {
+                    bat 'python academic_system.py'
+                }
+            }
+        }
+        stage ('Deep Academic Auditing') {
+            when {
+                expression { params.RUN_PERFORMANCE_AUDIT == true }
+            }
+            steps {
+                dir('project3') {
+                    bat 'python academic_system.py --run-audit'
+                }
+            }
+        }
+    }
+}
