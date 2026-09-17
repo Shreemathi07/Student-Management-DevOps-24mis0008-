@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('Source SCM Checkout') {
             steps {
-                git branch: 'main', url: ''
+                git branch: 'main', url: 'https://github.com/Shreemathi07/Student-Management-DevOps-24mis0008-.git'
             }
         }
         stage ('Execute Analytics Engine') {
