@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    stages {
+        stage('Source SCM Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com'
+            }
+        }
+        stage ('Parallel Verification Tasks') {
+            parallel {
+                stage ('Verify Student Registries') {
+                    steps {
+                        dir('project2') {
+                            bat 'python verify_students.py'
+                        }
+                    }
+                }
+                stage ('Verify Academic Balances') {
+                    steps {
+                        dir('project2') {
+                            bat 'python verify_grades.py'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
