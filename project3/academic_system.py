@@ -10,10 +10,11 @@ def run_intensive_academic_audit():
     print("      CRITICAL ACADEMIC RISK AUDIT OPERATION")
     print("=" * 50)
     
+    # Explicit subject performance distribution values
     raw_grades_data = {
-        "Math":,
-        "Science":,
-        "History": [92, 38, 81, 20, 72, 89]
+        "Math": (85, 70, 45, 95, 60),
+        "Science": (90, 65, 50, 98, 58),
+        "History": (78, 80, 48, 92, 62)
     }
     
     risk_threshold = 50
@@ -31,7 +32,6 @@ def run_intensive_academic_audit():
     print("=" * 50 + "\n")
 
 if __name__ == "__main__":
-    # If explicit audit parameter argument is passed
     if len(sys.argv) > 1 and sys.argv[1] == "--run-audit":
         run_intensive_academic_audit()
     else:
